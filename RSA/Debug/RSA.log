@@ -1,20 +1,11 @@
 ﻿  RSA.cpp
-C:\Projects\RSA\RSA.cpp(26,20): warning C4018:  '<': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(65,18): warning C4244:  'argument': conversion from 'unsigned __int64' to 'const _Ty', possible loss of data
-C:\Projects\RSA\RSA.cpp(65,18): warning C4244:         with
-C:\Projects\RSA\RSA.cpp(65,18): warning C4244:         [
-C:\Projects\RSA\RSA.cpp(65,18): warning C4244:             _Ty=unsigned char
-C:\Projects\RSA\RSA.cpp(65,18): warning C4244:         ]
-C:\Projects\RSA\RSA.cpp(66,20): warning C4244:  'argument': conversion from 'unsigned __int64' to '_Ty', possible loss of data
-C:\Projects\RSA\RSA.cpp(66,20): warning C4244:         with
-C:\Projects\RSA\RSA.cpp(66,20): warning C4244:         [
-C:\Projects\RSA\RSA.cpp(66,20): warning C4244:             _Ty=unsigned char
-C:\Projects\RSA\RSA.cpp(66,20): warning C4244:         ]
-C:\Projects\RSA\RSA.cpp(67,20): warning C4244:  'argument': conversion from 'unsigned __int64' to '_Ty', possible loss of data
-C:\Projects\RSA\RSA.cpp(67,20): warning C4244:         with
-C:\Projects\RSA\RSA.cpp(67,20): warning C4244:         [
-C:\Projects\RSA\RSA.cpp(67,20): warning C4244:             _Ty=unsigned char
-C:\Projects\RSA\RSA.cpp(67,20): warning C4244:         ]
+C:\Projects\RSA\RSA.cpp(39,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(45,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(67,18): warning C4244:  'argument': conversion from 'unsigned __int64' to 'const _Ty', possible loss of data
+C:\Projects\RSA\RSA.cpp(67,18): warning C4244:         with
+C:\Projects\RSA\RSA.cpp(67,18): warning C4244:         [
+C:\Projects\RSA\RSA.cpp(67,18): warning C4244:             _Ty=unsigned char
+C:\Projects\RSA\RSA.cpp(67,18): warning C4244:         ]
 C:\Projects\RSA\RSA.cpp(68,20): warning C4244:  'argument': conversion from 'unsigned __int64' to '_Ty', possible loss of data
 C:\Projects\RSA\RSA.cpp(68,20): warning C4244:         with
 C:\Projects\RSA\RSA.cpp(68,20): warning C4244:         [
@@ -35,46 +26,57 @@ C:\Projects\RSA\RSA.cpp(71,20): warning C4244:         with
 C:\Projects\RSA\RSA.cpp(71,20): warning C4244:         [
 C:\Projects\RSA\RSA.cpp(71,20): warning C4244:             _Ty=unsigned char
 C:\Projects\RSA\RSA.cpp(71,20): warning C4244:         ]
-C:\Projects\RSA\RSA.cpp(127,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(128,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(72,20): warning C4244:  'argument': conversion from 'unsigned __int64' to '_Ty', possible loss of data
+C:\Projects\RSA\RSA.cpp(72,20): warning C4244:         with
+C:\Projects\RSA\RSA.cpp(72,20): warning C4244:         [
+C:\Projects\RSA\RSA.cpp(72,20): warning C4244:             _Ty=unsigned char
+C:\Projects\RSA\RSA.cpp(72,20): warning C4244:         ]
+C:\Projects\RSA\RSA.cpp(73,20): warning C4244:  'argument': conversion from 'unsigned __int64' to '_Ty', possible loss of data
+C:\Projects\RSA\RSA.cpp(73,20): warning C4244:         with
+C:\Projects\RSA\RSA.cpp(73,20): warning C4244:         [
+C:\Projects\RSA\RSA.cpp(73,20): warning C4244:             _Ty=unsigned char
+C:\Projects\RSA\RSA.cpp(73,20): warning C4244:         ]
 C:\Projects\RSA\RSA.cpp(129,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(130,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(135,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(136,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(131,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(132,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(137,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(138,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(143,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(144,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(139,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(140,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(145,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(146,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(151,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(152,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(147,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(148,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(153,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(154,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(159,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(160,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(155,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(156,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(161,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(162,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(167,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(168,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(163,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(164,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(169,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(170,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(175,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(176,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(171,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(172,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(177,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(178,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(183,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(184,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(179,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(180,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(185,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
 C:\Projects\RSA\RSA.cpp(186,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
-C:\Projects\RSA\RSA.cpp(218,20): warning C4018:  '<': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(233,20): warning C4018:  '<': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(250,21): warning C4018:  '<': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(258,20): warning C4018:  '<': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(281,20): warning C4018:  '<=': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(282,16): warning C4018:  '>=': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(311,20): warning C4018:  '<=': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(337,20): warning C4018:  '<=': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(388,9): warning C4018:  '>': signed/unsigned mismatch
-C:\Projects\RSA\RSA.cpp(442,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Projects\RSA\RSA.cpp(187,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(188,24): warning C4293:  '>>': shift count negative or too big, undefined behavior
+C:\Projects\RSA\RSA.cpp(240,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(248,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(272,20): warning C4018:  '<=': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(273,16): warning C4018:  '>=': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(302,20): warning C4018:  '<=': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(328,20): warning C4018:  '<=': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(379,9): warning C4018:  '>': signed/unsigned mismatch
+C:\Projects\RSA\RSA.cpp(424,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Projects\RSA\RSA.cpp(495,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Projects\RSA\RSA.cpp(543,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Projects\RSA\RSA.cpp(547,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   RSA.vcxproj -> C:\Projects\RSA\Debug\RSA.exe

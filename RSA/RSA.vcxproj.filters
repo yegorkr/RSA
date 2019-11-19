@@ -18,5 +18,13 @@
     <ClCompile Include="RSA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="lint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

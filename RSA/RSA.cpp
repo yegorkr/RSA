@@ -9,9 +9,11 @@
 #include <random>
 #include <ctime>
 #include <math.h>
+#include "lint.h"
 
 
 using namespace std;
+using namespace apa;
 const vector<int> zero = { 0 };
 const vector<int> one = { 1 };
 const vector<int> two = { 2 };
@@ -21,14 +23,6 @@ const vector<int> four = { 4 };
 const vector<int> six = { 6 };
 const vector<int> eight = { 8 };
 
-string toString(vector<int> a) {
-	string s = "";
-	for (int i = 0; i < a.size(); ++i)
-		s += to_string(a[i]);
-	return s;
-}
-
-vector<int> mexp(vector<int> a, vector<int> b, vector<int> c);
 vector<int> add(vector<int> a, vector<int> b);
 vector<int> sub(vector<int> a, vector<int> b);
 vector<int> max(vector<int> a, vector<int> b);
@@ -38,12 +32,20 @@ vector<int> div(vector<int> a, vector<int> b);
 vector<int> mod(vector<int> a, vector<int> b);
 vector<int> pow(vector<int> a, vector<int> b);
 vector<int> gcd(vector<int> a, vector<int> b);
-vector<int> m(vector<int> a);
-vector<int> v(string);
-void print(vector<int> a);
-string toString(vector<int> a);
-string toString(vector<int> a);
-int eq(vector<int> a, vector<int> b);
+
+
+string toString(vector<int> a) {
+	string s = "";
+	for (int i = 0; i < a.size(); ++i)
+		s += to_string(a[i]);
+	return s;
+}
+string toString(vector<unsigned char> a) {
+	string s = "";
+	for (int i = 0; i < a.size(); ++i)
+		s += to_string(a[i]);
+	return s;
+}
 
 void RSA(vector<int> a, vector<int> b);
 
@@ -187,7 +189,6 @@ vector<unsigned char> SHA256(vector<unsigned char> input) {
 	return res;
 }
 
-
 vector<int> v(string s) {
 	vector<int> r;
 	int mFlag = 0;
@@ -214,25 +215,14 @@ vector<int> v(string s) {
 	return r;
 }
 
-void print(vector<int> a) {
-	for (int i = 0; i < a.size(); ++i)
-		cout << a[i];
-	cout << "\n";
-}
-vector<int> m(vector<int> a) {
-	a[0] = abs(a[0]);
-	return a;
-}
-
 vector<int> neg(vector<int> a) {
 	a[0] = a[0] * (-1);
 	return a;
 }
 
-vector<int> toNeg(vector<int> a) {
-	for (int i = 1; i < a.size(); ++i)
-		a[i] *= -1;
-	return(a);
+vector<int> m(vector<int> a) {
+	a[0] = abs(a[0]);
+	return a;
 }
 
 vector<int> max(vector<int> a, vector<int> b) {
@@ -270,6 +260,7 @@ int eq(vector<int> a, vector<int> b) {
 		return 1;
 	return 0;
 }
+
 
 vector<int> add(vector<int> a, vector<int> b) {
 	if (!(a[0] < 0 && b[0] < 0)) {
@@ -393,19 +384,65 @@ vector<int> div(vector<int> a, vector<int> b) {
 	return r;
 }
 
-vector<int> mod(vector<int> a, vector<int> b) {
-	return sub(a, mult(b, div(a, b)));
+
+lint mod(lint a, lint b) {
+	return a - (b * (a / b));
 }
 
-vector<int> pow(vector<int> a, vector<int> b) {
-	b = m(b);
-	vector<int> c = zero;
-	vector<int> r = one;
-	while (!eq(c, b)) {
-		r = mult(a, r);
-		c = add(c, one);
+lint gcd(lint a, lint b) {
+	if (b == 0) return a;
+	return gcd(b, mod(a, b));
+}
+
+lint mexp(lint a, lint b, lint n) {
+	if (n == 1) return 0;
+	lint x("1");
+	lint y(a);
+	while (!(b == 1)) {
+		if (mod(b, 2) == 1) {
+			x = mod(x * y, n); // multiplying with base
+		}
+		y = mod(y * y, n); // squaring the base
+		b = b / 2;
 	}
-	return r;
+	return mod(x, n);
+}
+void RSA_gen(lint p, lint q, lint& e, lint& d) {
+	lint N = p * q;
+	lint fN = (p - 1) * (q - 1);
+	for (e = 357; e < fN; e = e + 1) if (gcd(e, fN) == 1) break;
+	lint k = 2;
+	lint tmp = 1 + k * fN;
+	while ((mod(tmp, e) != 0)) {
+		k = k + 1;
+		tmp = 1 + k * fN;
+	}
+	d = tmp / e;
+}
+
+void RSA_sign(lint m, lint d, lint N, lint &cX, lint &cY) {  //OAEP
+	srand(time(0));
+	string s = m.to_string() + "00000000";
+	vector<unsigned char> r;
+	r.push_back(rand() % 9 + 1);
+	for(int k0 = 0; k0 < 12; ++k0)
+		r.push_back(rand() % 10);
+	vector<unsigned char> rG = SHA256(r);
+	vector<unsigned char> X;
+	for (int i = 0; i < 16; ++i)
+		X.push_back(m[i] | rG[i]);
+	vector<unsigned char> XH = SHA256(X);
+	vector<unsigned char> Y;
+	for (int i = 0; i < 12; ++i)
+		Y.push_back(r[i] | XH[i]);
+	cX = lint(toString(X));
+	cX = mexp(cX, d, N);
+	cY = lint(toString(Y));
+	cY = mexp(cY, d, N);
+}
+
+vector<int> mod(vector<int> a, vector<int> b) {
+	return sub(a, mult(b, div(a, b)));
 }
 
 vector<int> gcd(vector<int> a, vector<int> b) {
@@ -418,36 +455,14 @@ vector<int> gcd(vector<int> a, vector<int> b) {
 	return a;
 }
 
-
-vector<int> lcm(vector<int> a, vector<int> b) {
-	return div(mult(a, b), gcd(a, b));
-}
-
-vector<int> mexp(vector<int> a, vector<int> b, vector<int> n) {
-	if (eq(n, one)) return zero;
-	vector<int> x = one;
-	vector<int> y = a;
-	while (!eq(b, zero)) {
-		if (eq(mod(b, two), one)) {
-			x = mod(mult(x, y), n); // multiplying with base
-		}
-		y = mod(mult(y, y), n); // squaring the base
-		b = div(b, two);
-	}
-	return mod(x, n);
-}
-
-
-void RSA(vector<int> a, vector<int> b, vector<int> m) {
-	srand(time(0));
+void RSA(vector<int> a, vector<int> b , vector<int> &e, vector<int> &d) {
 	vector<int> n = mult(a, b);
 	vector<int> t = mult(sub(a, one), sub(b, one));
-	vector<int> e = v("343");
+	e = v("200");
 	while (!eq(e, t)) {
 		if (eq(gcd(e, t), one)) break;
 		else e = add(e, one);
 	}
-	vector<int> d;
 	vector<int> k = two;
 	vector<int> tmp = add(one, mult(k, t));
 	while (!eq(mod(tmp, e), zero)) {
@@ -455,34 +470,102 @@ void RSA(vector<int> a, vector<int> b, vector<int> m) {
 		tmp = add(one, mult(k, t));
 	}
 	d = div(tmp, e);
-	vector<int> r;
-	r.push_back((rand() % 9) + 1);
-	for (int i = 1; i < 8; ++i) r.push_back((rand() % 10));
-	for (int i = 0; i < 8; ++i) m.insert(m.begin() + i, r[i]);
-	vector<int> c = one;
-	c = mexp(m, e, n);
-	print(c);
-	vector<int> md = one;
-	md = mexp(c, d, n);
-	print(md);
 }
 
+bool RSA_check(lint cX, lint cY, lint m, lint e, lint N) {
+	vector<unsigned char> X, Y;
+	string temp = mexp(cX, e, N).to_string();
+	for (int i = 0; temp[i] != 0; ++i) X.push_back(temp[i] - '0');
+	temp = mexp(cY, e, N).to_string();
+	for (int i = 0; temp[i] != 0; ++i) Y.push_back(temp[i] - '0');
+	for (int i = 0; i != 64; ++i) X.push_back('0');
+	for (int i = 0; i != 64; ++i) Y.push_back('0');
+	vector<unsigned char> HX = SHA256(X);
+	vector<unsigned char> r, m1, Gr;
+	for (int i = 0; i < 12; ++i) r.push_back(Y[i] | HX[i]);
+	Gr = SHA256(r);
+	for (int i = 0; i < 16; ++i) m1.push_back(X[i] | Gr[i]);
+	string s1 = m.to_string();
+	string s2 = toString(m1);
+	for (int i = 0; i < 12; ++i) if (s1[i] == s2[i]) return true;
+	return false;
+}
+
+int randint(int low, int up) {
+	srand(time(0));
+	return rand() % (++up - low) + low;
+}
+
+int modpow(int a, int d, int m) {
+	int c = a;
+	for (int i = 1; i < d; i++)
+		c = (c * a) % m;
+	return c % m;
+}
+
+bool witness(int a, int s, int d, int n) {
+	int x = modpow(a, d, n);
+	if (x == 1) return true;
+	for (int i = 0; i < s - 1; i++) {
+		if (x == n - 1) return true;
+		x = modpow(x, 2, n);
+	}
+	return (x == n - 1);
+}
+
+bool isprime(int x, int j) {
+	if (x == 2) {
+		return true;
+	}
+	if (!(x & 1) || x <= 1) {
+		return false;
+	}
+	int a = 0;
+	int s = 0;
+	int d = x - 1;
+
+	while (!(d & 1)) {
+		d >>= 1;
+		s += 1;
+	}
+	for (int i = 0; i < j; i++) {
+		a = randint(2, x - 1);
+		if (!witness(a, s, d, x)) {
+			return false;
+		}
+	}
+
+	return true;
+}
 
 int main()
 {
-	string A = "4089532177";
-	string B = "60821";
-	vector<unsigned char> d;
-	d.push_back('3');
-	d.push_back('2');
-	d.push_back('4');
-	d = SHA256(d);
-	string ss;
-	for (int i = 0; i < 2; ++i) ss = ss + to_string(d[i]);
-	cout << ss << "\n";
-	vector<int> m = v(ss);
-	string s1, s2, s3;
-	cout << "RSA\n";
-	RSA(v(A), v(B), m);
+	srand(time(0));
+	int a = 4;
+	int b = 4;
+	while (!isprime(a, 5000)) a = rand() % 2001 + 1234;
+	srand(time(0));
+	while (!isprime(b, 5000)) b = rand() % 38003 + 348;
+	lint A = a;
+	lint B = b;
+	lint e(1);
+	lint d(1);
+	lint cX(1);
+	lint cY(1);
+	lint N = A * B;
+	vector<int> t1, t2;
+	vector<unsigned char> sh;
+	sh.push_back(13);
+	lint m(toString(SHA256(sh)));
+	RSA(v(A.to_string()), v(B.to_string()), t1, t2);
+	e = lint(toString(t1));
+	d = lint(toString(t2));
+	RSA_sign(m, d, N, cX, cY);
+	bool r = RSA_check(cX, cY, m, e, N);
+	cout << A.to_string() << "\n";
+	cout << B.to_string() << "\n";
+	cout << e.to_string() << "\n";
+	cout << d.to_string() << "\n";
+	cout << r << "\n";
 	return 0;
 }
